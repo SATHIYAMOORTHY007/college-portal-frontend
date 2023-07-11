@@ -19,7 +19,7 @@ function UpdateStudent() {
   let student = async () => {
     try {
       const student = await axios.post(
-        `https://college-protal.onrender.com/api/student/getParticularStudent/${params.id}`,
+        `https://college-protal.onrender.com/api/student/getParticularStudent/${params.student_id}`,
         {
           headers: {
             token: auth.token,

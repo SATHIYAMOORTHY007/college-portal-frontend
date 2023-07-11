@@ -46,7 +46,7 @@ function App() {
                 element={<ExaminerList />}
               />
               <Route
-                path="principal/updateStudent/:id"
+                path="principal/updateStudent/:student_id"
                 element={<UpdateStudent />}
               />
             </Route>
