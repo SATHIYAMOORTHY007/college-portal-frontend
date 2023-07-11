@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
+import AuthContext from '../Authcontext/Authcontext'
 function AddExamMarks() {
+  const { auth } = useContext(AuthContext)
   useEffect(() => {
     getAllstudentId()
   }, [])
@@ -11,6 +13,11 @@ function AddExamMarks() {
       //get All student id
       const info = await axios.get(
         `http://localhost:4000/api/student/getAllStudent`,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
       setStudents_id(info.data)
     } catch (error) {
@@ -35,7 +42,8 @@ function AddExamMarks() {
   const [mark5, setMark5] = useState(Number)
   const [mark6, setMark6] = useState(Number)
   const [data, setData] = useState({})
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     const data1 = {}
     data1.studentId = selected_id
     data1.name = subject
@@ -52,6 +60,11 @@ function AddExamMarks() {
       const a = await axios.post(
         `http://localhost:4000/api/examiner/createExam`,
         data1,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
 
       alert('success')

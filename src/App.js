@@ -13,11 +13,18 @@ import CreateExaminer from './admin/CreateExaminer'
 import Login from './auth/Login'
 import Required from './Authcontext/Required'
 import Private from './Private'
+import CreatePrincipal from './admin/CreatePrincipal'
+import StudentList from './principal/StudentList'
+import Forgetpassword from './auth/Forgetpassword'
+import Resetpassword from './auth/Resetpassword'
+import ExaminerList from './principal/ExaminerList'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/forgetpassword" element={<Forgetpassword />} />
+        <Route path="/resetpassword/:id/:token" element={<Resetpassword />} />
         <Route element={<Required />}>
           <Route path="/" element={<Private />}>
             <Route path="portal" element={<Portal />}>
@@ -28,6 +35,15 @@ function App() {
               <Route path="examiner/addLeaves" element={<AddLeaves />} />
               <Route path="admin/createstudent" element={<CreateStudent />} />
               <Route path="admin/createExaminer" element={<CreateExaminer />} />
+              <Route
+                path="admin/createPrincipal"
+                element={<CreatePrincipal />}
+              />
+              <Route path="principal/getAllstudent" element={<StudentList />} />
+              <Route
+                path="principal/getAllexaminer"
+                element={<ExaminerList />}
+              />
             </Route>
           </Route>
         </Route>

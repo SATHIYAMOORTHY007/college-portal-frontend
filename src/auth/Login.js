@@ -6,7 +6,7 @@ import axios from 'axios'
 
 function Login() {
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState({})
+
   const { setAuth } = useContext(AuthContext)
   const Navigate = useNavigate()
   const myformik = useFormik({
@@ -39,14 +39,14 @@ function Login() {
         const email = value?.data?.details?.email
         const id = value?.data?.details?._id
         window.localStorage.setItem('role', role)
-        console.log(name)
+
         setAuth({ token, role, name, email, id })
         if (role == 'student') {
           Navigate('/portal/bio')
         } else if (role == 'examiner') {
           Navigate('/portal/examiner/addmarks')
         } else {
-          Navigate('/portal')
+          Navigate('/portal/principal/getAllstudent')
         }
 
         setLoading(false)
@@ -129,14 +129,9 @@ function Login() {
                       </form>
                       <hr />
                       <div class="text-center">
-                        <a class="small" href="forgot-password.html">
+                        <Link class="small" to="/forgetpassword">
                           Forgot Password?
-                        </a>
-                      </div>
-                      <div class="text-center">
-                        <a class="small" href="register.html">
-                          Create an Account!
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

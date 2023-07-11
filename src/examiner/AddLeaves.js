@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import AuthContext from '../Authcontext/Authcontext'
 function AddLeaves() {
+  const { auth } = useContext(AuthContext)
   useEffect(() => {
     getAllstudentId()
   }, [])
@@ -15,6 +17,11 @@ function AddLeaves() {
       //get All student id
       const info = await axios.get(
         `http://localhost:4000/api/student/getAllStudent`,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
       setStudents_id(info.data)
     } catch (error) {
@@ -25,7 +32,8 @@ function AddLeaves() {
   //get form datas ,so we create useState
   const [semester, setSemester] = useState('')
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     const data = {}
     data.date = startDate
     data.name = semester
@@ -34,6 +42,11 @@ function AddLeaves() {
       const a = await axios.post(
         `http://localhost:4000/api/examiner/createLeave`,
         data,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
 
       alert('success')

@@ -1,7 +1,7 @@
 import { React, useContext, useState } from 'react'
 import axios from 'axios'
 import AuthContext from '../Authcontext/Authcontext'
-function CreateExaminer() {
+function CreatePrincipal() {
   const { auth } = useContext(AuthContext)
   const [name, setName] = useState('')
   const [email, setEamil] = useState('')
@@ -12,12 +12,12 @@ function CreateExaminer() {
     e.preventDefault()
     const data = {}
     data.username = name
-    data.Email = email
+    data.email = email
     data.pwd = Password
     data.Role = role
     try {
       const a = await axios.post(
-        `http://localhost:4000/api/admin/createExaminer`,
+        `http://localhost:4000/api/admin/createPrincipal`,
         data,
         {
           headers: {
@@ -79,4 +79,4 @@ function CreateExaminer() {
   )
 }
 
-export default CreateExaminer
+export default CreatePrincipal

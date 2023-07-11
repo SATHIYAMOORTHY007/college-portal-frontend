@@ -4,6 +4,7 @@ import AuthContext from '../Authcontext/Authcontext'
 
 function Sidebar() {
   const { auth } = useContext(AuthContext)
+  //set role localstorage
   const role = window.localStorage.getItem('role')
 
   return (
@@ -16,9 +17,6 @@ function Sidebar() {
           class="sidebar-brand d-flex align-items-center justify-content-center"
           href="index.html"
         >
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-          </div>
           <div class="sidebar-brand-text mx-3">{role} Portal</div>
         </a>
 
@@ -69,7 +67,7 @@ function Sidebar() {
           ''
         )}
 
-        {role && role === 'examiner' ? (
+        {(role && role === 'examiner') || (role && role === 'principal') ? (
           <li class="nav-item">
             <Link
               class="nav-link collapsed"
@@ -99,7 +97,35 @@ function Sidebar() {
           ''
         )}
 
-        {auth?.role === 'admin' ? (
+        {(role && role === 'admin') || (role && role === 'principal') ? (
+          <li class="nav-item">
+            <Link
+              class="nav-link collapsed"
+              to="principal/getAllstudent"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-fw fa-cog"></i>
+              <span>Students Info</span>
+            </Link>
+            <Link
+              class="nav-link collapsed"
+              to="principal/getAllexaminer"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-fw fa-cog"></i>
+              <span>All Examiners</span>
+            </Link>
+          </li>
+        ) : (
+          ''
+        )}
+        {role && role === 'admin' ? (
           <li class="nav-item">
             <Link
               class="nav-link collapsed"
@@ -123,6 +149,17 @@ function Sidebar() {
             >
               <i class="fas fa-fw fa-cog"></i>
               <span>Add Examiner</span>
+            </Link>
+            <Link
+              class="nav-link collapsed"
+              to="admin/createPrincipal"
+              data-toggle="collapse"
+              data-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-fw fa-cog"></i>
+              <span>CreatePrincipal</span>
             </Link>
           </li>
         ) : (

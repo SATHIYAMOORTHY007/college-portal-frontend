@@ -5,7 +5,7 @@ import AuthContext from '../Authcontext/Authcontext'
 function LeaveInfo() {
   const { auth } = useContext(AuthContext)
   const [sem, setSem] = useState('')
-  const [od, setOd] = useState(null)
+  const [leave, setLeave] = useState(null)
   //semester option
   const options = [
     { value: 'sem1', label: 'semester 1' },
@@ -19,14 +19,19 @@ function LeaveInfo() {
   ]
 
   //get data form backend
-  const Submit = async () => {
+  const Submit = async (e) => {
+    e.preventDefault()
     try {
       //get student exam marks
       const info = await axios.get(
         `http://localhost:4000/api/examiner/StudentLeave/${auth.id}/${sem.label}`,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
-      setOd(info)
-      console.log(od)
+      setLeave(info)
     } catch (error) {
       console.log(error)
     }
@@ -52,8 +57,8 @@ function LeaveInfo() {
             <th className="text-center">Date</th>
           </tr>
         </thead>
-        {od && od.data.length > 0 ? (
-          od?.data?.map((date) => {
+        {leave && leave?.data?.length > 0 ? (
+          leave?.data?.map((date) => {
             return (
               <>
                 <tbody>

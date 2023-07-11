@@ -5,7 +5,7 @@ import AuthContext from '../Authcontext/Authcontext'
 function ExamInfo() {
   const { auth } = useContext(AuthContext)
   const [sem, setSem] = useState('')
-  const [od, setOd] = useState(null)
+  const [exam, setExam] = useState(null)
   //semester option
   const options = [
     { value: 'sem1', label: 'semester 1' },
@@ -19,14 +19,19 @@ function ExamInfo() {
   ]
 
   //get data form backend
-  const Submit = async () => {
+  const Submit = async (e) => {
+    e.preventDefault()
     try {
       //get student exam marks
       const info = await axios.get(
         `http://localhost:4000/api/examiner/StudentExam/${auth.id}/${sem.label}`,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
-      setOd(info.data.message[0])
-      console.log(od)
+      setExam(info.data.message[0])
     } catch (error) {
       console.log(error)
     }
@@ -53,7 +58,7 @@ function ExamInfo() {
             <th scope="col">Marks</th>
           </tr>
         </thead>
-        {od?.subjects.map((e) => {
+        {exam?.subjects.map((e) => {
           return (
             <>
               <tbody>

@@ -1,7 +1,10 @@
-import { React, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import axios from 'axios'
+import AuthContext from '../Authcontext/Authcontext'
 function CreateStudent() {
+  const { auth } = useContext(AuthContext)
   const [name, setName] = useState('')
+  const [email, setEamil] = useState('')
   const [Password, setPassword] = useState('')
   const [rollno, setRollno] = useState('')
   const [section, setSection] = useState('')
@@ -9,9 +12,11 @@ function CreateStudent() {
   const [course, setCourse] = useState('')
   const [dept, setDept] = useState('')
   const [role, setRole] = useState('')
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     const data = {}
     data.username = name
+    data.useremail = email
     data.pwd = Password
     data.roll_no = rollno
     data.sec = section
@@ -20,12 +25,21 @@ function CreateStudent() {
     data.department = dept
     data.Role = role
     try {
-      const a = await axios.post(
-        `http://localhost:4000/api/student/create`,
-        data,
-      )
-
+      await axios.post(`http://localhost:4000/api/student/create`, data, {
+        headers: {
+          token: auth.token,
+        },
+      })
       alert('success')
+      setName('')
+      setEamil('')
+      setPassword('')
+      setRollno('')
+      setSection('')
+      setGender('')
+      setCourse('')
+      setDept('')
+      setRole('')
     } catch (err) {
       alert(err)
       console.log(err)
@@ -41,6 +55,15 @@ function CreateStudent() {
             className="m-2"
             onChange={(e) => setName(e.target.value)}
             value={name}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Student Email"
+            className="m-2"
+            onChange={(e) => setEamil(e.target.value)}
+            value={email}
           />
         </div>
         <div>

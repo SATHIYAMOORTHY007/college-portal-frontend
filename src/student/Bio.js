@@ -15,6 +15,11 @@ function Bio() {
       //get student data
       const info = await axios.get(
         `http://localhost:4000/api/student/getParticularStudent/${auth.id}`,
+        {
+          headers: {
+            token: auth.token,
+          },
+        },
       )
       setBio(info.data.message)
     } catch (error) {
@@ -78,6 +83,13 @@ function Bio() {
                   <h6 class="mb-0 text-bold">Rollno</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">{bio.rollno}</div>
+              </div>
+              <hr></hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0 text-bold">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">{bio.email}</div>
               </div>
             </div>
           </div>
