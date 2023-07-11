@@ -66,7 +66,6 @@ function UpdateStudent() {
     <>
       <div className="row">
         <div className="col-2 col-lg-8">
-          {params.student_id}
           <form className="from-control" onSubmit={myformik.handleSubmit}>
             <div className="grid-container">
               <div className="item1">
