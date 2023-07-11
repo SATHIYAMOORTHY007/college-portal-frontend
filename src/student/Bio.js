@@ -14,7 +14,7 @@ function Bio() {
     try {
       //get student data
       const info = await axios.get(
-        `http://localhost:4000/api/student/getParticularStudent/${auth.id}`,
+        `https://college-protal.onrender.com/api/student/getParticularStudent/${auth.id}`,
         {
           headers: {
             token: auth.token,

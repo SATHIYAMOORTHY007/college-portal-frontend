@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import { Navigate } from 'react-router-dom'
 import AuthContext from './Authcontext'
-import Potect from '../Private'
+
 import Private from '../Private'
 
 function Required() {

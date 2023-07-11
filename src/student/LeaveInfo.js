@@ -24,7 +24,7 @@ function LeaveInfo() {
     try {
       //get student exam marks
       const info = await axios.get(
-        `http://localhost:4000/api/examiner/StudentLeave/${auth.id}/${sem.label}`,
+        `https://college-protal.onrender.com/api/examiner/StudentLeave/${auth.id}/${sem.label}`,
         {
           headers: {
             token: auth.token,

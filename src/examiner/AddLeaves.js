@@ -16,7 +16,7 @@ function AddLeaves() {
     try {
       //get All student id
       const info = await axios.get(
-        `http://localhost:4000/api/student/getAllStudent`,
+        `https://college-protal.onrender.com/api/student/getAllStudent`,
         {
           headers: {
             token: auth.token,
@@ -40,7 +40,7 @@ function AddLeaves() {
     data.studentId = selected_id
     try {
       const a = await axios.post(
-        `http://localhost:4000/api/examiner/createLeave`,
+        `https://college-protal.onrender.com/api/examiner/createLeave`,
         data,
         {
           headers: {

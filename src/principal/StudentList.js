@@ -24,7 +24,7 @@ function StudentList() {
       )
       if (confirmdate) {
         await axios.delete(
-          `http://localhost:4000/api/student/deleteStudent/${id}`,
+          `https://college-protal.onrender.com/api/student/deleteStudent/${id}`,
           {
             headers: {
               token: auth.token,

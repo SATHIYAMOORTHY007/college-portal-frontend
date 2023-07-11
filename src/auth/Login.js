@@ -29,7 +29,7 @@ function Login() {
       try {
         setLoading(true)
         const value = await axios.post(
-          'http://localhost:4000/api/auth/login',
+          'https://college-protal.onrender.com/api/auth/login',
           values,
         )
 
