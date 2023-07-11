@@ -25,12 +25,16 @@ function CreateStudent() {
     data.department = dept
     data.Role = role
     try {
-      await axios.post(`http://localhost:4000/api/student/create`, data, {
-        headers: {
-          token: auth.token,
-          role: auth.role,
+      await axios.post(
+        `https://college-protal.onrender.com/api/student/create`,
+        data,
+        {
+          headers: {
+            token: auth.token,
+            role: auth.role,
+          },
         },
-      })
+      )
       alert('success')
       setName('')
       setEamil('')

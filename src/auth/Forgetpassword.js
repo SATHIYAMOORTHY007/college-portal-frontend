@@ -18,7 +18,7 @@ function Forgetpassword() {
     onSubmit: async (values) => {
       try {
         const value = await axios.post(
-          `http://localhost:4000/api/auth/forgetpassword`,
+          `https://college-protal.onrender.com/api/auth/forgetpassword`,
           values,
         )
         const al = value.data

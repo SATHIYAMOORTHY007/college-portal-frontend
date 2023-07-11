@@ -17,7 +17,7 @@ function CreatePrincipal() {
     data.Role = role
     try {
       const a = await axios.post(
-        `http://localhost:4000/api/admin/createPrincipal`,
+        `https://college-protal.onrender.com/api/admin/createPrincipal`,
         data,
         {
           headers: {

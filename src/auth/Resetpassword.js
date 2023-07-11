@@ -26,7 +26,7 @@ function Resetpassword() {
     onSubmit: async (values) => {
       try {
         await axios.post(
-          `http://localhost:4000/api/auth/resetpassword/${params.id}/${params.token}`,
+          `-https://college-protal.onrender.com/api/auth/resetpassword/${params.id}/${params.token}`,
           values,
         )
         alert('success')
