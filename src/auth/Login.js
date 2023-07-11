@@ -26,7 +26,6 @@ function Login() {
       return errors
     },
     onSubmit: async (values) => {
-      values.preventDefault()
       try {
         setLoading(true)
         const value = await axios.post(
