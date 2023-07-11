@@ -20,6 +20,7 @@ function AddLeaves() {
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )
