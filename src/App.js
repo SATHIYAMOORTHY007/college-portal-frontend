@@ -18,6 +18,7 @@ import StudentList from './principal/StudentList'
 import Forgetpassword from './auth/Forgetpassword'
 import Resetpassword from './auth/Resetpassword'
 import ExaminerList from './principal/ExaminerList'
+import UpdateStudent from './examiner/UpdateStudent'
 function App() {
   return (
     <BrowserRouter>
@@ -43,6 +44,10 @@ function App() {
               <Route
                 path="principal/getAllexaminer"
                 element={<ExaminerList />}
+              />
+              <Route
+                path="principal/updateStudent/:id"
+                element={<UpdateStudent />}
               />
             </Route>
           </Route>

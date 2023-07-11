@@ -140,6 +140,42 @@ function Login() {
             </div>
           </div>
         </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Role</th>
+              <th scope="col">username</th>
+              <th scope="col">password</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Admin</td>
+              <td>admin@gmail.com</td>
+              <td>admin</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>principal</td>
+              <td>123abcprincipal@gmail.com</td>
+              <td>0000</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Examiner</td>
+              <td>examiner@gmail.com</td>
+              <td>examiner</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Student</td>
+              <td>123abc000</td>
+              <td>0000</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </>
   )

@@ -89,6 +89,12 @@ function StudentList() {
                     >
                       Delete
                     </Link>
+                    <Link
+                      to={`/portal/principal/updateStudent/${d._id}`}
+                      className="btn btn-info mr-1 mt-2"
+                    >
+                      Update
+                    </Link>
                   </tr>
                 )
               })}
