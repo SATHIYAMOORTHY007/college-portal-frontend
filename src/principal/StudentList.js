@@ -44,7 +44,7 @@ function StudentList() {
     setLoading(true)
     try {
       const student = await axios.get(
-        'http://localhost:4000/api/student/getAllStudent',
+        'https://college-protal.onrender.com/api/student/getAllStudent',
         {
           headers: {
             token: auth.token,
