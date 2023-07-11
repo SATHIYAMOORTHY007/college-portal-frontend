@@ -9,7 +9,7 @@ function StudentList() {
   const [array, setArray] = useState('')
   const [count, setCount] = useState(0)
   const [loading, setLoading] = useState(false)
-
+  const [id, setId] = useState(null)
   const params = useParams()
 
   useEffect(() => {
@@ -24,10 +24,11 @@ function StudentList() {
       )
       if (confirmdate) {
         await axios.delete(
-          `https://college-protal.onrender.com/api/student/deleteStudent/${id}`,
+          `http://localhost:4000/api/student/deleteStudent/${id}`,
           {
             headers: {
               token: auth.token,
+              role: auth.role,
             },
           },
         )
@@ -43,10 +44,11 @@ function StudentList() {
     setLoading(true)
     try {
       const student = await axios.get(
-        'https://college-protal.onrender.com/api/student/getAllStudent',
+        'http://localhost:4000/api/student/getAllStudent',
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )

@@ -20,10 +20,11 @@ function ExaminerList() {
     setLoading(true)
     try {
       const Examiner = await axios.get(
-        'https://college-protal.onrender.com/api/admin/getAllExaminer',
+        'http://localhost:4000/api/admin/getAllExaminer',
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )

@@ -17,11 +17,12 @@ function CreateExaminer() {
     data.Role = role
     try {
       const a = await axios.post(
-        `https://college-protal.onrender.com/api/admin/createExaminer`,
+        `http://localhost:4000/api/admin/createExaminer`,
         data,
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )

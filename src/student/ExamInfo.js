@@ -24,10 +24,11 @@ function ExamInfo() {
     try {
       //get student exam marks
       const info = await axios.get(
-        `https://college-protal.onrender.com/api/examiner/StudentExam/${auth.id}/${sem.label}`,
+        `http://localhost:4000/api/examiner/StudentExam/${auth.id}/${sem.label}`,
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )

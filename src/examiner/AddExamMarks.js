@@ -12,10 +12,11 @@ function AddExamMarks() {
     try {
       //get All student id
       const info = await axios.get(
-        `https://college-protal.onrender.com/api/student/getAllStudent`,
+        `http://localhost:4000/api/student/getAllStudent`,
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )
@@ -58,11 +59,12 @@ function AddExamMarks() {
     setData(data1)
     try {
       const a = await axios.post(
-        `https://college-protal.onrender.com/api/examiner/createExam`,
+        `http://localhost:4000/api/examiner/createExam`,
         data1,
         {
           headers: {
             token: auth.token,
+            role: auth.role,
           },
         },
       )
